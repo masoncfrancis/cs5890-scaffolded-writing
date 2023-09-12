@@ -14,7 +14,6 @@ def grade(data: Dict[str, Any]) -> None:
     grade_question_parameterized(data, "subproblem_definition", grade_statement)
     set_weighted_score_data(data)
 
-
 ###############################################################################
 #### DO NOT EDIT ABOVE HERE, ONLY EDIT BELOW
 ###############################################################################
