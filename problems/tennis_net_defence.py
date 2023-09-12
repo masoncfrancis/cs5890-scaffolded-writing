@@ -41,6 +41,10 @@ def grade_statement(tokens: List[str]) -> Tuple[bool, Optional[str]]:
         return False, 'If you run around the ball to hit a forehand, ' + \
             'you will be too far out of position if they volley to your forehand side.'
 
+    if submission.does_path_exist("SHOT_TYPE", "backhand") and \
+        submission.does_path_exist('SHOT_LOCATION', 'EPSILON'):
+        return False, 'A backhand may be a good choice, but where will you hit it?'
+
     return True, None
 
 
