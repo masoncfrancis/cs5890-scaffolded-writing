@@ -42,6 +42,8 @@ def grade(data: Dict[str, Any]) -> None:
     set_weighted_score_data(data)
 
 statement = """
+<p>Write a subproblem definition that can be used as the basis of a dynamic programming algorithm for this problem:</p>
+
 <p>After the Revolutionary War, Alexander Hamilton's biggest rival as a lawyer was Aaron Burr. (Sir!) In fact, the two worked next door to each other. Unlike Hamilton, Burr cannot work non-stop; every trial he tries exhausts him. The bigger the trial, the longer he must rest before he is well enough to take the next trial. (Of course, he is willing to wait for it.) If a trial arrives while Burr is resting, Hamilton snatches it up instead. Burr has been asked to consider a sequence of $n$ upcoming trials. He quickly computes two arrays $profit[1 .. n]$ and $skip[1 .. n]$, where for each index $i$,
 <ul>
     <li>$profit[i]$ is the amount of money Burr would make by taking the $i$th trial, and</li>

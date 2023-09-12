@@ -94,6 +94,8 @@ def grade(data: Dict[str, Any]) -> None:
     set_weighted_score_data(data)
 
 statement = """
+<p>Write a subproblem definition that can be used as the basis of a dynamic programming algorithm for this problem:</p>
+
 <p>
     You are planning a road trip along a highway with $n$ evenly-spaced hotels. These hotels have varying costs; the costs of staying overnight at each of the hotels are provided in the array $HotelCosts[1..n]$, where $HotelCosts[i]$ is the cost of Hotel $i$. Each day, you can either travel to the next hotel, or you can skip a hotel and travel forward by two hotels. Each night, you must stay at a hotel. Furthermore, you have $k$ coupons that allow you to stay at a hotel for free. Describe a dynamic programming algorithm to determine the minimum possible cost of traveling from Hotel $1$ to Hotel $n$.
 </p>

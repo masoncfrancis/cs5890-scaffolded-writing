@@ -60,6 +60,8 @@ def grade(data: Dict[str, Any]) -> None:
     set_weighted_score_data(data)
 
 statement = """
+<p>Write a subproblem definition that can be used as the basis of a dynamic programming algorithm for this problem:</p>
+
 <p>You are given a sequence of digits $A[1..n]$ where each digit is between 1 and 9 (inclusive). You are asked to insert $+$ signs in between the digits to partition them into terms which will be added together. The length of each term in the summation must be either 1, 2, or 3 digits. Furthermore, no two consecutive terms in the summation can have the same length.</p>
 <p>What is the maximum sum that can be achieved under these constraints?</p>
 

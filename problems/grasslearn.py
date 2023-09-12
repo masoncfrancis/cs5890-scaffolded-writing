@@ -69,6 +69,8 @@ def grade(data: Dict[str, Any]) -> None:
     set_weighted_score_data(data)
 
 statement = """
+<p>Write a subproblem definition that can be used as the basis of a dynamic programming algorithm for this problem:</p>
+
 <p>For your algorithms class, you have to use an online learning platform called GrassLearn to complete your homework. Your homework consists of $n$ questions, and you have to complete them in order (i.e., you cannot skip a question and go back to it later). GrassLearn keeps track of your <em>streak</em>. Your streak starts at 0 at the beginning of an assignment, it increments by 1 every time you answer a question correctly, and it resets to 0 when you answer a question incorrectly. When you answer a question correctly, you earn $s$ points, where $s$ is the length of your streak after answering that question.</p>
 
 <p>Let $TimeNeeded[1..n]$ be an array of positive integers where $TimeNeeded[i]$ is the number of minutes required to answer Question $i$ correctly. You can assume that you don't spend any time on questions that you answer incorrectly.</p>
