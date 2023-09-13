@@ -18,14 +18,15 @@ def grade(data: Dict[str, Any]) -> None:
 #### DO NOT EDIT ABOVE HERE, ONLY EDIT BELOW
 ###############################################################################
 
-statement = "Assume you are a right-handed tennis player.' + \
-    'A right-handed oppenent approaches the net with a forehand down the line. What is your next move?"
+statement = 'Assume you are a right-handed tennis player.' + \
+    'A right-handed oppenent approaches the net with a forehand down the line. What is your next move?'
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
     START -> "Hit a" SHOT
-    SHOT -> SHOT_TYPE SHOT_LOCATION
+    SHOT -> SHOT_TYPE SHOT_LOCATION SHOT_SPIN | SHOT_TYPE SHOT_SPIN SHOT_LOCATION
     SHOT_TYPE -> "forehand" | "backhand"
     SHOT_LOCATION -> "lob" | "down the line" | "cross-court" | EPSILON
+    SHOT_SPIN -> "slice" | "with topspin" | EPSILON
     EPSILON ->
 """)
 
