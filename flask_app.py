@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def display_homepage():
-    return render_template("dp_intro.html")
+    return display_problem('data_structure_selection')
+    # return render_template("dp_intro.html")
 
 FREE_RESPONSE_PROBLEMS = {"max_halloween_profit", "coloring_mistakes"}
 
