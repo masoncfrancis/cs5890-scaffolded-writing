@@ -45,12 +45,16 @@ def grade_statement(tokens: List[str]) -> Tuple[bool, Optional[str]]:
         return False, 'Using an array will make checking for duplicates very inefficient.'
 
     if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
-        not submission.does_path_exist("STUCTURE_TYPE", "for efficient"):
+        not submission.does_path_exist("REASON", "for efficient"):
         return False, 'You must give a reason why you want to use that structure.'
 
     if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
-        not submission.does_path_exist("REASON", "memory usage"):
+        submission.does_path_exist("OPERATION", "memory usage"):
         return False, 'Sorry, hash maps are not very memory efficient!'
+
+    if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
+        submission.does_path_exist("OPERATION", "deletion"):
+        return False, 'Hash maps do allow for efficient deletion, but that is not relevant to the question.'
 
     return True, None
 
