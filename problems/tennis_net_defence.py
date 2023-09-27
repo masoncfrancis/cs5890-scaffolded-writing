@@ -23,7 +23,7 @@ statement = 'Assume you are a right-handed tennis player.' + \
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
     START -> "Hit a" SHOT
-    SHOT -> SHOT_TYPE SHOT_LOCATION SHOT_SPIN | SHOT_TYPE SHOT_SPIN SHOT_LOCATION
+    SHOT -> SHOT_TYPE SHOT_LOCATION SHOT_SPIN
     SHOT_TYPE -> "forehand" | "backhand"
     SHOT_LOCATION -> "lob" | "down the line" | "cross-court" | EPSILON
     SHOT_SPIN -> "slice" | "with topspin" | EPSILON
