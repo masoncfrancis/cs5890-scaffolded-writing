@@ -1,8 +1,7 @@
 import nltk
 from scaffolded_writing.cfg import ScaffoldedWritingCFG
 
-#defining Contex Free Grammar
-
+# code taken from https://stackoverflow.com/questions/4972571/tool-for-drawing-parse-trees
 def draw_parse_tree(grammar_string, sentence):
     # grammar = nltk.CFG.fromstring(grammar_string)
     grammar = ScaffoldedWritingCFG.fromstring(grammar_string)
