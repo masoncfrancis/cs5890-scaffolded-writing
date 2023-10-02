@@ -22,9 +22,9 @@ statement = "You need to store User IDs, avoiding duplicates." + \
     "What data structure should you use for greatest time efficiency?"
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
-    START -> "Use a" STUCTURE_TYPE REASON
+    START -> "Use a" STRUCTURE_TYPE REASON
     REASON -> "for efficient" OPERATION | EPSILON
-    STUCTURE_TYPE -> "array" | "linked list" | "hash map" | "binary search tree"
+    STRUCTURE_TYPE -> "array" | "linked list" | "hash map" | "binary search tree"
     OPERATION -> "insertion" | "deletion" | "look up" | "memory usage"
     EPSILON ->
 """)
@@ -32,27 +32,27 @@ PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
 def grade_statement(tokens: List[str]) -> Tuple[bool, Optional[str]]:
     submission = StudentSubmission(tokens, PROBLEM_CONFIG)
 
-    if submission.does_path_exist("STUCTURE_TYPE", "array"):
+    if submission.does_path_exist("STRUCTURE_TYPE", "array"):
         return False, 'Using an array will make checking for duplicates very inefficient.'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "linked list"):
+    if submission.does_path_exist("STRUCTURE_TYPE", "linked list"):
         return False, 'Using a linked list will make checking for duplicates very inefficient.'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "binary search tree"):
+    if submission.does_path_exist("STRUCTURE_TYPE", "binary search tree"):
         return False, 'A binary search tree would be fairly time efficient, but there is a better option.'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "array"):
+    if submission.does_path_exist("STRUCTURE_TYPE", "array"):
         return False, 'Using an array will make checking for duplicates very inefficient.'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
+    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
         not submission.does_path_exist("REASON", "for efficient"):
         return False, 'You must give a reason why you want to use that structure.'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
+    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
         submission.does_path_exist("OPERATION", "memory usage"):
         return False, 'Sorry, hash maps are not very memory efficient!'
 
-    if submission.does_path_exist("STUCTURE_TYPE", "hash map") and \
+    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
         submission.does_path_exist("OPERATION", "deletion"):
         return False, 'Hash maps do allow for efficient deletion, but that is not relevant to the question.'
 
