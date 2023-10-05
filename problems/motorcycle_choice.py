@@ -42,10 +42,10 @@ def grade_statement(tokens: List[str]) -> Tuple[bool, Optional[str]]:
     if submission.does_path_exist("BODY_TYPE", "sport bike"):
         return False, 'Sport bikes are generally considered to be less safe than cruisers'
 
-    if submission.does_path_exist("ENGINE SIZE", "650 cc"):
+    if submission.does_path_exist("ENGINE_SIZE", "650 cc"):
         return False, 'A 650 cc bike is probably too big to be very fuel efficient, and is one of the less safe options.'
 
-    if submission.does_path_exist("ENGINE SIZE", "1000 cc"):
+    if submission.does_path_exist("ENGINE_SIZE", "1000 cc"):
         return False, 'A 1000 cc bike is way too big to be very fuel efficient, completely unnecessary for just getting around town, and is one of the least safe options available.'
 
     return True, None
