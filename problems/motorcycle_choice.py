@@ -19,43 +19,34 @@ def grade(data: Dict[str, Any]) -> None:
 ###############################################################################
 
 statement = "You want to purchase a motorcycle for getting around Logan." + \
-    "What engine size, motorcycle type, and manufacturer should you choose for fuel efficiency, reliability, and safety?"
+    "What engine size, body type, and manufacturer should you choose for fuel efficiency, reliability, and safety?"
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
     START -> "Purchase a" BIKE
-    BIKE -> MANUFACTURER BODY_TYPE "that is" ENGINE_SIZE
+    BIKE -> MANUFACTURER "that is a" BODY_TYPE "with an engine size of" ENGINE_SIZE
     MANUFACTURER -> "Honda" | "Kawasaki" | "Harley-Davidson" | "KTM"
-    BODY_TYPE -> "sport bike" | "cruiser" | EPSILON
-    ENGINE_SIZE -> "125 cc" | "300 cc" | "600 cc" | "1000 cc" | EPSILON
+    BODY_TYPE -> "sport bike" | "cruiser"
+    ENGINE_SIZE -> "125 cc" | "300 cc" | "650 cc" | "1000 cc" | EPSILON
     EPSILON ->
 """)
 
 def grade_statement(tokens: List[str]) -> Tuple[bool, Optional[str]]:
     submission = StudentSubmission(tokens, PROBLEM_CONFIG)
 
-    if submission.does_path_exist("STRUCTURE_TYPE", "array"):
-        return False, 'Using an array will make checking for duplicates very inefficient.'
+    if submission.does_path_exist("MANUFACTURER", "Harley-Davidson"):
+        return False, 'Harley-Davidsons are not known for their reliability or fuel efficiency.'
 
-    if submission.does_path_exist("STRUCTURE_TYPE", "linked list"):
-        return False, 'Using a linked list will make checking for duplicates very inefficient.'
+    if submission.does_path_exist("MANUFACTURER", "KTM"):
+        return False, 'KTMs are not known for their reliability.'
 
-    if submission.does_path_exist("STRUCTURE_TYPE", "binary search tree"):
-        return False, 'A binary search tree would be fairly time efficient, but there is a better option.'
+    if submission.does_path_exist("BODY_TYPE", "sport bike"):
+        return False, 'Sport bikes are generally considered to be less safe than cruisers'
 
-    if submission.does_path_exist("STRUCTURE_TYPE", "array"):
-        return False, 'Using an array will make checking for duplicates very inefficient.'
+    if submission.does_path_exist("ENGINE SIZE", "650 cc"):
+        return False, 'A 650 cc bike is probably too big to be very fuel efficient, and is one of the less safe options.'
 
-    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
-        not submission.does_path_exist("REASON", "for efficient"):
-        return False, 'You must give a reason why you want to use that structure.'
-
-    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
-        submission.does_path_exist("OPERATION", "memory usage"):
-        return False, 'Sorry, hash maps are not very memory efficient!'
-
-    if submission.does_path_exist("STRUCTURE_TYPE", "hash map") and \
-        submission.does_path_exist("OPERATION", "deletion"):
-        return False, 'Hash maps do allow for efficient deletion, but that is not relevant to the question.'
+    if submission.does_path_exist("ENGINE SIZE", "1000 cc"):
+        return False, 'A 1000 cc bike is way too big to be very fuel efficient, completely unnecessary for just getting around town, and is one of the least safe options available.'
 
     return True, None
 
