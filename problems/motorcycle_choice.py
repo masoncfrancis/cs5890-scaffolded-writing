@@ -18,14 +18,15 @@ def grade(data: Dict[str, Any]) -> None:
 #### DO NOT EDIT ABOVE HERE, ONLY EDIT BELOW
 ###############################################################################
 
-statement = "You need to purchase a motorcycle for getting around Logan." + \
+statement = "You want to purchase a motorcycle for getting around Logan." + \
     "What engine size, motorcycle type, and manufacturer should you choose for fuel efficiency, reliability, and safety?"
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
-    START -> "Purchase a" STRUCTURE_TYPE REASON
-    REASON -> "for efficient" OPERATION | EPSILON
-    STRUCTURE_TYPE -> "array" | "linked list" | "hash map" | "binary search tree"
-    OPERATION -> "insertion" | "deletion" | "look up" | "memory usage"
+    START -> "Purchase a" BIKE
+    BIKE -> MANUFACTURER BODY_TYPE "that is" ENGINE_SIZE
+    MANUFACTURER -> "Honda" | "Kawasaki" | "Harley-Davidson" | "KTM"
+    BODY_TYPE -> "sport bike" | "cruiser" | EPSILON
+    ENGINE_SIZE -> "125 cc" | "300 cc" | "600 cc" | "1000 cc" | EPSILON
     EPSILON ->
 """)
 
