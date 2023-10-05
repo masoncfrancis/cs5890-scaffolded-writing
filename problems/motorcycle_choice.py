@@ -18,11 +18,11 @@ def grade(data: Dict[str, Any]) -> None:
 #### DO NOT EDIT ABOVE HERE, ONLY EDIT BELOW
 ###############################################################################
 
-statement = "You need to store User IDs, avoiding duplicates." + \
-    "What data structure should you use for greatest time efficiency?"
+statement = "You need to purchase a motorcycle for getting around Logan." + \
+    "What engine size, motorcycle type, and manufacturer should you choose for fuel efficiency, reliability, and safety?"
 
 PROBLEM_CONFIG = ScaffoldedWritingCFG.fromstring(f"""
-    START -> "Use a" STRUCTURE_TYPE REASON
+    START -> "Purchase a" STRUCTURE_TYPE REASON
     REASON -> "for efficient" OPERATION | EPSILON
     STRUCTURE_TYPE -> "array" | "linked list" | "hash map" | "binary search tree"
     OPERATION -> "insertion" | "deletion" | "look up" | "memory usage"
